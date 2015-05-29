@@ -34,9 +34,18 @@
     <color name="half_transparent">#5000</color>
     <color name="voip_bg">#f4f4f4</color>
     <color name="blue_deep">#005b7f</color>
-    <color name="green">#7ddb9d</color>
+    <color name="green_1">#7ddb9d</color>
     <color name="yellow">#fe9920</color>
     <color name="white_light">#aaffffff</color>
     <color name="voip_blue_top">#2498e3</color>
+
+
+
+    <color name="saffron">#F4B63E</color>
+    <color name="sienna">#EB6460</color>
+    <color name="green">#10b4a5</color>
+    <color name="purple">#7c57e4</color>
+    <color name="pink">#ff4284</color>
+    <color name="orange">#ff8c6a</color>
 
 </resources>

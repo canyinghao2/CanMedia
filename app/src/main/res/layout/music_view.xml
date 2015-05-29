@@ -1,0 +1,105 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+   >
+
+
+    <View
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-130dp"
+        android:layout_marginLeft="-130dp"
+
+        android:background="@drawable/ring_shap"
+        android:orientation="vertical" />
+
+
+    <View
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="-160dp"
+        android:layout_marginRight="-160dp"
+
+        android:background="@drawable/ring_shap" />
+
+
+    <View
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_gravity="bottom|right"
+
+
+        android:background="@drawable/ring_shap" />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="bottom|right"
+        android:src="@mipmap/ic_play_circle_outline_grey"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="80dp"
+        android:src="@mipmap/ic_fast_rewind_grey"
+        />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="80dp"
+        android:src="@mipmap/ic_fast_forward_grey"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="60dp"
+        android:src="@mipmap/ic_notifications_grey"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+
+        android:src="@mipmap/ic_add_grey"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+         android:layout_marginBottom="60dp"
+        android:src="@mipmap/ic_shuffle_grey"
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+         android:layout_marginBottom="45dp"
+        android:layout_marginLeft="45dp"
+        android:src="@mipmap/ic_shuffle_grey"
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+
+        android:layout_marginLeft="60dp"
+        android:src="@mipmap/ic_shuffle_grey"
+        />
+
+
+
+
+</FrameLayout>
