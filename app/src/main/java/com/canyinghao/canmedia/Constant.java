@@ -12,4 +12,6 @@ public class Constant {
     public static final  String bean="bean";
     public static final  String savePosition="savePosition";
     public static final  String mylove="我的最爱";
+
+    public static final  String list="list";
 }

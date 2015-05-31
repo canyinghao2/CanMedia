@@ -32,6 +32,7 @@
     <color name="gray">#a5a5a5</color>
     <color name="blue">#2498e2</color>
     <color name="half_transparent">#5000</color>
+    <color name="transparent">#0000</color>
     <color name="voip_bg">#f4f4f4</color>
     <color name="blue_deep">#005b7f</color>
     <color name="green_1">#7ddb9d</color>

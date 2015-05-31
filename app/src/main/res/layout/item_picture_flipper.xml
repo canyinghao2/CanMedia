@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.canyinghao.canmedia.FlipViewPager
+    <com.canyinghao.canmedia.view.flipviewpager.FlipViewPager
         android:id="@+id/flip_view"
         android:layout_width="fill_parent"
         android:layout_height="192dp"

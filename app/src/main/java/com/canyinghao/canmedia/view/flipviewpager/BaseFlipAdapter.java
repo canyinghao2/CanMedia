@@ -1,4 +1,4 @@
-package com.canyinghao.canmedia;
+package com.canyinghao.canmedia.view.flipviewpager;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 
+import com.canyinghao.canmedia.R;
 
 import java.util.List;
 
@@ -16,11 +17,13 @@ import java.util.List;
 public abstract class BaseFlipAdapter<T> extends BaseAdapter {
     private List<T> items;
     private FlipSettings settings;
-    private LayoutInflater inflater;
+    public  LayoutInflater inflater;
+    public Context context;
 
     public BaseFlipAdapter(Context context, List<T> items, FlipSettings settings) {
         this.items = items;
         this.settings = settings;
+        this.context=context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -49,7 +52,7 @@ public abstract class BaseFlipAdapter<T> extends BaseAdapter {
 
         final ViewHolder viewHolder;
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.flipper, null);
+            convertView = inflater.inflate(R.layout.item_picture_flipper, null);
         if (convertView.getTag() != null) {
             viewHolder = (ViewHolder) convertView.getTag();
         } else {

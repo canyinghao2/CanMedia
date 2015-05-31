@@ -1,4 +1,4 @@
-package com.canyinghao.canmedia;
+package com.canyinghao.canmedia.view.flipviewpager;
 
 import android.content.Context;
 import android.graphics.Camera;

@@ -61,7 +61,7 @@ public class CustomListDialog extends Dialog {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.community_custom_listview_dialog);
+		setContentView(R.layout.custom_listview_dialog);
 		getWindow().setBackgroundDrawable(new BitmapDrawable());
 		setCanceledOnTouchOutside(true);
 

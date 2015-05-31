@@ -1,4 +1,4 @@
-package com.canyinghao.canmedia;
+package com.canyinghao.canmedia.view.flipviewpager;
 
 import java.util.HashMap;
 import java.util.Map;

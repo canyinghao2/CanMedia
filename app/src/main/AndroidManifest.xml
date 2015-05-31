@@ -31,7 +31,7 @@
         android:theme="@style/SwipeTheme"
          >
         <activity
-            android:name=".activity.music.MusicActivity"
+            android:name=".activity.picture.PictureActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -45,6 +45,7 @@
         <activity android:name=".activity.music.MusicLocalActivity"/>
         <activity android:name=".activity.music.MusicListActivity"/>
         <activity android:name=".activity.music.MusicPlayActivity"/>
+        <activity android:name=".activity.picture.PictureListActivity"/>
 
 
     </application>
