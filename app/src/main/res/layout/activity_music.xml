@@ -3,20 +3,192 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:clipToPadding="false"
-    android:fitsSystemWindows="false"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/histroy_music"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="-200dp"
+
+
+        android:background="@drawable/ova_shap"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="60dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_queue_music_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="历史记录"
+
+                android:textColor="@color/black_text_54"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="200首"
+                android:textColor="@color/black_text_54"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/local_music"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="160dp"
+        android:layout_marginRight="-200dp"
+
+
+        android:background="@drawable/ova_shap"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="60dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_queue_music_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="本地歌曲"
+
+                android:textColor="@color/black_text_54"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="200首"
+                android:textColor="@color/black_text_54"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/playlist_music"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="bottom|center_horizontal"
+
+        android:layout_marginBottom="-30dp"
+
+
+        android:background="@drawable/ova_shap"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_queue_music_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="我的歌单"
+
+                android:textColor="@color/black_text_54"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="我的最爱"
+                android:textColor="@color/black_text_54"
+
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:text="200首"
+                android:textColor="@color/black_text_54"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+    <com.canyinghao.canmedia.view.musicview.MusicView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="bottom"
+        android:visibility="gone"/>
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize" />
 
-
-    <com.canyinghao.canmedia.view.musicview.MusicView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_gravity="bottom"/>
+        android:layout_height="1dp"
+        android:layout_marginTop="55dp"
+        android:background="@color/black_text_26" />
 
 </FrameLayout>

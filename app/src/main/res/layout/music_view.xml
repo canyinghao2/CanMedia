@@ -1,104 +1,144 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
-   >
+    android:layout_height="160dp">
 
 
     <View
+        android:id="@+id/v_model"
         android:layout_width="260dp"
-        android:layout_height="260dp"
 
+        android:layout_height="260dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="-130dp"
-        android:layout_marginLeft="-130dp"
 
+        android:layout_marginLeft="-130dp"
         android:background="@drawable/ring_shap"
         android:orientation="vertical" />
 
 
     <View
+        android:id="@+id/v_play"
         android:layout_width="320dp"
-        android:layout_height="320dp"
 
+        android:layout_height="320dp"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="-160dp"
-        android:layout_marginRight="-160dp"
 
+        android:layout_marginRight="-160dp"
         android:background="@drawable/ring_shap" />
 
 
-    <View
+    <com.canyinghao.otherlibrary.ProgressWheel xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pw_media"
         android:layout_width="80dp"
         android:layout_height="80dp"
-
         android:layout_gravity="bottom|right"
+        app:barColor="@color/black"
+        app:barWidth="1dp"
+        app:contourColor="#0000"
+        app:rimColor="@color/black_text_26"
+        app:rimWidth="1dp"
 
 
-        android:background="@drawable/ring_shap" />
+        app:textSize="14sp" />
 
 
     <ImageView
+        android:id="@+id/play"
         android:layout_width="50dp"
+
         android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
         android:layout_marginBottom="15dp"
         android:layout_marginRight="15dp"
-        android:layout_gravity="bottom|right"
-        android:src="@mipmap/ic_play_circle_outline_grey"/>
+        android:src="@mipmap/ic_play_circle_outline_grey" />
+
 
     <ImageView
+        android:id="@+id/up"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="bottom|right"
         android:layout_marginRight="80dp"
-        android:src="@mipmap/ic_fast_rewind_grey"
-        />
+        android:src="@mipmap/ic_fast_rewind_grey" />
 
 
     <ImageView
+        android:id="@+id/down"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="80dp"
-        android:src="@mipmap/ic_fast_forward_grey"/>
+        android:src="@mipmap/ic_fast_forward_grey" />
+
     <ImageView
+        android:id="@+id/set"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="60dp"
         android:layout_marginRight="60dp"
-        android:src="@mipmap/ic_notifications_grey"/>
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-
-        android:src="@mipmap/ic_add_grey"/>
+        android:src="@mipmap/ic_notifications_grey" />
 
     <ImageView
+        android:id="@+id/head"
         android:layout_width="50dp"
         android:layout_height="50dp"
+
         android:layout_gravity="bottom"
-         android:layout_marginBottom="60dp"
-        android:src="@mipmap/ic_shuffle_grey"
-        />
+        android:src="@mipmap/ic_add_grey" />
+
     <ImageView
+        android:id="@+id/cycle"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="bottom"
-         android:layout_marginBottom="45dp"
+        android:layout_marginBottom="60dp"
+        android:src="@mipmap/ic_shuffle_grey" />
+
+    <ImageView
+        android:id="@+id/random"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="45dp"
         android:layout_marginLeft="45dp"
-        android:src="@mipmap/ic_shuffle_grey"
-        />
+        android:src="@mipmap/ic_shuffle_grey" />
+
     <ImageView
+        android:id="@+id/order"
         android:layout_width="50dp"
         android:layout_height="50dp"
+
         android:layout_gravity="bottom"
-
         android:layout_marginLeft="60dp"
-        android:src="@mipmap/ic_shuffle_grey"
-        />
+        android:src="@mipmap/ic_shuffle_grey" />
 
+
+
+    <TextView
+        android:id="@+id/tv_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="20dp"
+        android:textSize="18sp"
+        android:maxLength="8"
+        android:textColor="@color/black_text_54"
+        android:text="虫儿飞"/>
+    <TextView
+        android:id="@+id/tv_singer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="15dp"
+        android:maxLength="8"
+        android:textColor="@color/black_text_26"
+        android:textSize="15sp"
+        android:text="虫儿飞"/>
 
 
 
