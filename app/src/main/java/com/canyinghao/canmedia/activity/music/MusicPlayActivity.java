@@ -21,7 +21,7 @@ public class MusicPlayActivity extends BaseBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music);
+        setContentView(R.layout.activity_music_play);
         ButterKnife.inject(this);
 
 
@@ -39,4 +39,9 @@ public class MusicPlayActivity extends BaseBarActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MusicActivity.getMusicView().showOrHide(true);
+    }
 }

@@ -50,9 +50,10 @@ public class PlaylistUtils {
 
             for (PlaylistBean bean: list){
 
-               long count= App.getInstance().getDbUtils().count(Selector.from(AudioBean.class).where("playlistId","=",bean.getName()));
+               List<AudioBean> aList = App.getInstance().getDbUtils().findAll(Selector.from(AudioBean.class).where("playlistId","=",bean.getName()));
 
-                bean.setCountAudio((int)count);
+                bean.setCountAudio(aList.size());
+                bean.setList(aList);
 
 
             }

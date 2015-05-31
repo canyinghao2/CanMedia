@@ -26,16 +26,16 @@ public class BaseActivity extends ActionBarActivity {
 
         EventBus.getDefault().register(this);
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        // 激活状态栏设置
+
         tintManager.setStatusBarTintEnabled(true);
-        // 激活导航栏设置
+
         tintManager.setNavigationBarTintEnabled(true);
 
-        // 设置一个颜色给系统栏
+
         tintManager.setTintColor(getResources().getColor(R.color.blue_gray_500));
-        // 设置一个样式背景给导航栏
+
         tintManager.setNavigationBarTintColor(getResources().getColor(R.color.blue_gray_500));
-        // 设置一个状态栏资源
+
         tintManager.setStatusBarTintColor(getResources().getColor(R.color.blue_gray_500));
 
 

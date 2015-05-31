@@ -1,4 +1,4 @@
-package com.canyinghao.canmedia.adapter;
+package com.canyinghao.canmedia.adapter.music;
 
 import android.content.Context;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.canyinghao.canhelper.IntentHelper;
 import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.activity.music.MusicListActivity;
+import com.canyinghao.canmedia.adapter.NewBaseAdapter;
 import com.canyinghao.canmedia.bean.music.PlaylistBean;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ import butterknife.InjectView;
 /**
  * Created by yangjian on 15/5/30.
  */
-public class SingerListAdapter extends  NewBaseAdapter<PlaylistBean> {
+public class SingerListAdapter extends NewBaseAdapter<PlaylistBean> {
 
 
 

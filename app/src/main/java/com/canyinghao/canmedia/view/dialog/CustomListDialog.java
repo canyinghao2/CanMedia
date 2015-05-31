@@ -43,6 +43,19 @@ public class CustomListDialog extends Dialog {
 		this.itemClick = itemClick;
 
 	}
+    public CustomListDialog(final Context context, String title, List<String> list,
+			OnItemClick itemClick) {
+		super(context, R.style.CustomDialog);
+
+        this.strs=new String[list.size()];
+        this.strs= (String[]) list.toArray(strs);
+
+		this.context = context;
+
+		this.title = title;
+		this.itemClick = itemClick;
+
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

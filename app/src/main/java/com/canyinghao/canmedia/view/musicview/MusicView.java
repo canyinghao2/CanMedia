@@ -2,13 +2,12 @@ package com.canyinghao.canmedia.view.musicview;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,12 +17,19 @@ import android.widget.TextView;
 
 import com.canyinghao.canhelper.AnimeHepler;
 import com.canyinghao.canhelper.BitmapHelper;
+import com.canyinghao.canhelper.IntentHelper;
 import com.canyinghao.canhelper.PhoneHelper;
+import com.canyinghao.canhelper.SPHepler;
 import com.canyinghao.canmedia.App;
+import com.canyinghao.canmedia.Constant;
 import com.canyinghao.canmedia.R;
+import com.canyinghao.canmedia.activity.BaseBarActivity;
+import com.canyinghao.canmedia.activity.music.MusicPlayActivity;
 import com.canyinghao.canmedia.bean.music.AudioBean;
+import com.canyinghao.canmedia.utils.MusicList.AudioUtils;
 import com.canyinghao.canmedia.utils.PlayerEngine.PlayerEngineImpl;
 import com.canyinghao.otherlibrary.ProgressWheel;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 import java.util.Timer;
@@ -50,15 +56,14 @@ public class MusicView extends FrameLayout {
     @InjectView(R.id.tv_singer)
     TextView tv_singer;
     @InjectView(R.id.head)
-    ImageView head;
+    SimpleDraweeView head;
+    @InjectView(R.id.play)
+    ImageView play;
 
 
     private AudioBean bean;
 
 
-    // 如果是想显示歌词则继承TextView并复写ondraw方法。
-    // 开启一个线程不断的调用ondraw方法去更改你所写的继承自TextView的内容
-    // 这里随便写了个集成自view的= =这个不是重点
 
 
     WindowManager mWM;        // WindowManager
@@ -88,8 +93,6 @@ public class MusicView extends FrameLayout {
 
             }
         });
-
-
 
 
     }
@@ -147,16 +150,22 @@ public class MusicView extends FrameLayout {
                         break;
                     case R.id.head:
 
+                        showOrHide(false);
+                        IntentHelper.getInstance().showIntent(BaseBarActivity.activity, MusicPlayActivity.class);
+
 
                         break;
                     case R.id.random:
                         App.getInstance().getPlayerEngine().setPlaybackMode(PlayerEngineImpl.PlaybackMode.SHUFFLE);
+                        PhoneHelper.getInstance().show("shuffle");
                         break;
                     case R.id.cycle:
                         App.getInstance().getPlayerEngine().setPlaybackMode(PlayerEngineImpl.PlaybackMode.REPEAT);
+                        PhoneHelper.getInstance().show("REPEAT");
                         break;
                     case R.id.order:
                         App.getInstance().getPlayerEngine().setPlaybackMode(PlayerEngineImpl.PlaybackMode.NORMAL);
+                        PhoneHelper.getInstance().show("NORMAL");
                         break;
 
                 }
@@ -187,26 +196,7 @@ public class MusicView extends FrameLayout {
     }
 
 
-    private void getBitmap(ImageView albumImage, AudioBean bean) {
 
-        if (bean == null) {
-            return;
-        }
-
-
-        Bitmap bm = null;
-        String albumArt = getAlbumArt(bean.getAlbum_id());
-        if (albumArt == null) {
-            albumImage.setBackgroundResource(R.drawable.ring_shap);
-        } else {
-            bm = BitmapFactory.decodeFile(albumArt);
-            BitmapDrawable bmpDraw = new BitmapDrawable(bm);
-            albumImage.setImageDrawable(bmpDraw);
-        }
-
-
-
-    }
 
 
     private void setProgerss(final ProgressWheel pw) {
@@ -250,122 +240,105 @@ public class MusicView extends FrameLayout {
 
 
 
-    public MusicView setPlayBean(AudioBean bean){
 
+    public MusicView setPlayListAddBean(List<AudioBean> list,AudioBean bean) {
+        if (list!=null){
+            App.getInstance().getPlayerEngine().setMediaPlayList(list);
 
+        }
 
-
-        this.bean=bean;
+        this.bean = bean;
         tv_music.setText(bean.getName());
         tv_singer.setText(bean.getArtist());
 
         head.setImageResource(R.mipmap.ic_launcher);
 
+        SPHepler.getInstance().setString(Constant.playList,bean.getPlaylistId());
 
-        return  this;
-
-    }
-
-
-
-   public MusicView setPlayList(List<AudioBean> list){
-        App.getInstance().getPlayerEngine().setMediaPlayList(list);
+        int p=list.indexOf(bean);
+        SPHepler.getInstance().setInt(Constant.savePosition,p);
 
         return this;
     }
 
 
-    public void play(){
+    public void play() {
 
-        AudioBean playingBean=App.getInstance().getPlayerEngine().getPlayingBean();
-        if (playingBean!=null&&App.getInstance().getPlayerEngine().isPlaying()&&playingBean.getPath().equals(bean.getPath())) {
+        AudioBean playingBean = App.getInstance().getPlayerEngine().getPlayingBean();
+        if (playingBean != null && App.getInstance().getPlayerEngine().isPlaying() && playingBean.getPath().equals(bean.getPath())) {
             App.getInstance().getPlayerEngine().pause();
+            play.setImageResource(R.mipmap.ic_play_arrow_grey);
+        } else if (playingBean != null && App.getInstance().getPlayerEngine().isPause() && playingBean.getPath().equals(bean.getPath())) {
 
-        } else if(playingBean!=null&&App.getInstance().getPlayerEngine().isPause()&&playingBean.getPath().equals(bean.getPath())){
+            App.getInstance().getPlayerEngine().start();
+            play.setImageResource(R.mipmap.ic_pause_grey);
 
-            App.getInstance().getPlayerEngine().play();
-
-        }else{
-
+        } else {
+            play.setImageResource(R.mipmap.ic_pause_grey);
             App.getInstance().getPlayerEngine().setPlayingBean(bean);
             App.getInstance().getPlayerEngine().play();
 
-            PhoneHelper.getInstance().show("play");
+
             setProgerss(pw_media);
+
+            String content=AudioUtils.getInstance().getAlbumArt(bean.getAlbum_id());
+            if (!TextUtils.isEmpty(content)){
+
+                PhoneHelper.getInstance().show(content);
+                head.setImageURI(Uri.parse(content));
+            }
+
+            AudioUtils.getInstance().addMediaToPlaylist(bean, Constant.history);
+
         }
 
 
     }
 
 
-    public  void up(){
+    public void up() {
         App.getInstance().getPlayerEngine().previous();
 
-        AudioBean bean=    App.getInstance().getPlayerEngine().getPlayingBean();
-        setPlayBean(bean);
+        AudioBean bean = App.getInstance().getPlayerEngine().getPlayingBean();
+        setPlayListAddBean(null, bean);
         setProgerss(pw_media);
     }
 
-    public  void down(){
+    public void down() {
 
         App.getInstance().getPlayerEngine().next();
-        AudioBean bean=    App.getInstance().getPlayerEngine().getPlayingBean();
-        setPlayBean(bean);
+        AudioBean bean = App.getInstance().getPlayerEngine().getPlayingBean();
+        setPlayListAddBean(null, bean);
         setProgerss(pw_media);
     }
-
-
 
 
     public void showToWindowTop() {
 
 
-        // 设置载入view WindowManager参数
         mWM = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-
-
-
         WindowManager.LayoutParams params = new WindowManager.LayoutParams();
 
-
-        // 类型
         params.type = WindowManager.LayoutParams.TYPE_PHONE;
-
         // WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
-
-        // 设置flag
-
         int flags = 40;
-//        | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        // 如果设置了WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE，弹出的View收不到Back键的事件
         params.flags = flags;
-
-        // 不设置这个弹出框的透明遮罩显示为黑色
         params.format = PixelFormat.TRANSLUCENT;
-        // FLAG_NOT_TOUCH_MODAL不阻塞事件传递到后面的窗口
-        // 设置 FLAG_NOT_FOCUSABLE 悬浮窗口较小时，后面的应用图标由不可长按变为可长按
-        // 不设置这个flag的话，home页的划屏会有问题
-
-
-//        params.gravity = Gravity.BOTTOM;
+        params.gravity = Gravity.BOTTOM;
         params.width = PhoneHelper.getInstance().getScreenDisplayMetrics().widthPixels;
         params.height = BitmapHelper.getInstance().dp2Px(160);
 
 
-        params.x = 0;
-        params.y = PhoneHelper.getInstance().getScreenDisplayMetrics().heightPixels - BitmapHelper.getInstance().dp2Px(160);
-        mWM.addView(this, params);// 这句是重点 给WindowManager中丢入刚才设置的值
-        // 只有addview后才能显示到页面上去。
-        // 注册到WindowManager win是要刚才随便载入的layout，wmParams是刚才设置的WindowManager参数集
-        // 效果是将win注册到WindowManager中并且它的参数是wmParams中设置饿
-
+//        params.x = 0;
+//        params.y = PhoneHelper.getInstance().getScreenDisplayMetrics().heightPixels - BitmapHelper.getInstance().dp2Px(160);
+        mWM.addView(this, params);
 
 
     }
 
 
-    public void   reMoveWindow(){
-        if (mWM!=null){
+    public void reMoveWindow() {
+        if (mWM != null) {
 
             mWM.removeView(this);
         }
@@ -373,15 +346,15 @@ public class MusicView extends FrameLayout {
 
     }
 
-    public void showOrHide(){
-//        if (getVisibility()==View.VISIBLE){
-//
-//            setVisibility(View.GONE);
-//
-//        }else{
-//
-//            setVisibility(View.VISIBLE);
-//        }
+    public void showOrHide(boolean isShow) {
+        if (isShow){
+            setVisibility(View.VISIBLE);
+
+
+        }else{
+            setVisibility(View.GONE);
+
+        }
 
 
     }

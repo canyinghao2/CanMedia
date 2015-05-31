@@ -1,5 +1,6 @@
 package com.canyinghao.canmedia.bean.music;
 
+import com.canyinghao.canmedia.Constant;
 import com.canyinghao.canmedia.bean.BaseBean;
 
 import java.util.Date;
@@ -16,7 +17,7 @@ public class AudioBean extends BaseBean {
 
 	private Date updateDate;
 
-	private String playlistId;
+	private String playlistId= Constant.local;
 
     private int  album_id;
     private String  artist;

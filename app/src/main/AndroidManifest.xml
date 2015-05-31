@@ -44,6 +44,7 @@
 
         <activity android:name=".activity.music.MusicLocalActivity"/>
         <activity android:name=".activity.music.MusicListActivity"/>
+        <activity android:name=".activity.music.MusicPlayActivity"/>
 
 
     </application>

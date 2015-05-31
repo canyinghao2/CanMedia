@@ -12,6 +12,7 @@
     <string name="pic">图片</string>
     <string name="scan">扫一扫</string>
     <string name="city">城市</string>
+    <string name="hint_music_exit">歌曲已存在</string>
 
 
 

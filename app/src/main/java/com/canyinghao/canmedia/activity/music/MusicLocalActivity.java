@@ -11,7 +11,7 @@ import com.canyinghao.canhelper.LogHelper;
 import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.activity.BaseBarActivity;
 import com.canyinghao.canmedia.fragment.BaseFragment;
-import com.canyinghao.canmedia.fragment.MusicListFragment;
+import com.canyinghao.canmedia.fragment.music.MusicListFragment;
 import com.canyinghao.otherlibrary.CustomViewPager.SupportFragmentAdapter;
 import com.canyinghao.otherlibrary.viewpagerindicator.UnderlinePageIndicator;
 

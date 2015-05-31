@@ -9,6 +9,7 @@ import com.canyinghao.canhelper.FileHelper;
 import com.canyinghao.canhelper.LogHelper;
 import com.canyinghao.canmedia.utils.PlayerEngine.IPlayerEngine;
 import com.canyinghao.canmedia.utils.PlayerEngine.PlayerEngineImpl;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.lidroid.xutils.DbUtils;
 
@@ -37,6 +38,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
 
 
 		app = this;
+        Fresco.initialize(this);
 		ButterKnife.setDebug(BuildConfig.DEBUG);
 		LogHelper.DEBUG=BuildConfig.DEBUG;
 

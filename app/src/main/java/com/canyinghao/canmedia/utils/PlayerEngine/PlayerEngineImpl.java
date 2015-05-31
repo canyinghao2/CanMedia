@@ -151,6 +151,7 @@ public class PlayerEngineImpl implements IPlayerEngine {
 
 	}
 
+
 	@Override
 	public void play() {
 		mediaPlayerEngine.play(bean.getPath());
@@ -279,11 +280,17 @@ public class PlayerEngineImpl implements IPlayerEngine {
 
 		}
 
+
+
+
 		@Override
 		public void stop() throws IllegalStateException {
 			isPause = false;
 			super.stop();
+
+
 		}
+
 
 		@Override
 		public void pause() throws IllegalStateException {

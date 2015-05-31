@@ -1,21 +1,25 @@
-package com.canyinghao.canmedia.fragment;
+package com.canyinghao.canmedia.fragment.music;
 
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.canyinghao.canhelper.AnimeHepler;
+import com.canyinghao.canmedia.Constant;
 import com.canyinghao.canmedia.R;
-import com.canyinghao.canmedia.adapter.MusicListAdapter;
-import com.canyinghao.canmedia.adapter.SingerListAdapter;
+import com.canyinghao.canmedia.adapter.music.MusicListAdapter;
+import com.canyinghao.canmedia.adapter.music.SingerListAdapter;
 import com.canyinghao.canmedia.bean.music.AudioBean;
 import com.canyinghao.canmedia.bean.music.PlaylistBean;
+import com.canyinghao.canmedia.fragment.BaseFragment;
 import com.canyinghao.canmedia.utils.MusicList.AudioUtils;
+import com.canyinghao.canmedia.utils.MusicList.PlaylistUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,13 +41,12 @@ public class MusicListFragment extends BaseFragment {
     public static final int music = 0;
     public static final int singer = 1;
     public static final int folder = 2;
-    public static final int history = 3;
-    public static final int playlist = 4;
+
     @InjectView(R.id.lisView)
     ListView listView;
 
     int type;
-    AudioUtils audioDao;
+
 
     private List<AudioBean> list;
 
@@ -77,11 +80,13 @@ public class MusicListFragment extends BaseFragment {
 
         AnimeHepler.getInstance().setAnimationEmptyView(context,listView,null,null);
 
-        audioDao = new AudioUtils(context);
+
         list = new ArrayList<AudioBean>();
         if (mBundle != null) {
 
-          PlaylistBean bean= (PlaylistBean) mBundle.getSerializable("bean");
+            PlaylistBean bean= (PlaylistBean) mBundle.getSerializable(Constant.bean);
+            String playList= mBundle.getString(Constant.playList);
+            String history= mBundle.getString(Constant.history);
             if (bean!=null){
              list.addAll(  bean.getList()) ;
 
@@ -90,7 +95,19 @@ public class MusicListFragment extends BaseFragment {
 
                 listView.setAdapter(adapter);
 
-            }else{
+            }else if(!TextUtils.isEmpty(playList)){
+
+
+                SingerListAdapter adapter= new SingerListAdapter(context,PlaylistUtils.getAllPlaylist());
+                listView.setAdapter(adapter);
+
+            }else if(!TextUtils.isEmpty(history)) {
+                List<AudioBean> list=AudioUtils.getInstance().getAudioListByPlaylistId(Constant.history);
+
+                MusicListAdapter   adapter = new MusicListAdapter(context, list);
+
+                listView.setAdapter(adapter);
+            } else{
                 type = mBundle.getInt(TYPE);
                 getListData();
             }
@@ -113,7 +130,7 @@ public class MusicListFragment extends BaseFragment {
 
             case music:
 
-                list.addAll(audioDao.getLocalAudioList());
+                list.addAll(AudioUtils.getInstance().getLocalAudioList());
 
 
                 MusicListAdapter   adapter = new MusicListAdapter(context, list);
@@ -123,7 +140,7 @@ public class MusicListFragment extends BaseFragment {
 
                 break;
             case singer:
-                list.addAll(audioDao.getLocalAudioList());
+                list.addAll(AudioUtils.getInstance().getLocalAudioList());
                 Map<String, PlaylistBean> map = new HashMap<String, PlaylistBean>();
                 List pList = new ArrayList<PlaylistBean>();
                 for (AudioBean bean : list) {
@@ -155,7 +172,7 @@ public class MusicListFragment extends BaseFragment {
 
                 break;
             case folder:
-                list.addAll(audioDao.getLocalAudioList());
+                list.addAll(AudioUtils.getInstance().getLocalAudioList());
                 Map<String, PlaylistBean> mapFolder = new HashMap<String, PlaylistBean>();
                 List ListFolder = new ArrayList<PlaylistBean>();
                 for (AudioBean bean : list) {
@@ -186,10 +203,7 @@ public class MusicListFragment extends BaseFragment {
                 listView.setAdapter(adapterFolder);
 
                 break;
-            case history:
-                break;
-            case playlist:
-                break;
+
 
         }
 

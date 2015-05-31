@@ -1,7 +1,6 @@
 package com.canyinghao.canmedia.utils.MusicList;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.Cursor;
 import android.net.Uri;
@@ -9,6 +8,7 @@ import android.provider.MediaStore;
 
 import com.canyinghao.canhelper.PhoneHelper;
 import com.canyinghao.canmedia.App;
+import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.bean.music.AudioBean;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
@@ -22,8 +22,20 @@ public class AudioUtils extends ContextWrapper {
 
     private ContentResolver cr;
 
-    public AudioUtils(Context base) {
-        super(base);
+    private static AudioUtils utils;
+    public static AudioUtils getInstance(){
+
+        if (utils==null){
+
+            utils=new AudioUtils();
+        }
+
+        return utils;
+
+    }
+
+    private  AudioUtils() {
+        super(App.getInstance());
     }
 
 
@@ -140,7 +152,7 @@ public class AudioUtils extends ContextWrapper {
             long count = App.getInstance().getDbUtils().count(Selector.from(AudioBean.class).where("album_id", "=", bean.getAlbum_id()).and("playlistId", "=", playlistId));
             if (count > 0) {
 
-                PhoneHelper.getInstance().show("歌单中已存在此歌曲");
+                PhoneHelper.getInstance().show(getResources().getString(R.string.hint_music_exit));
 
                 return;
             }
@@ -167,6 +179,20 @@ public class AudioUtils extends ContextWrapper {
 
         return mList;
     }
+
+    public long getAudioListCountByPlaylistId(String playlistId) {
+
+       long count=0;
+        try {
+            count = App.getInstance().getDbUtils().count(Selector.from(AudioBean.class).where("playlistId", "=", playlistId));
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+
+
+        return count;
+    }
+
 
 
 

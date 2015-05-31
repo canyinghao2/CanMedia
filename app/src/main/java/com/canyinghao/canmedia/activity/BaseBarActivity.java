@@ -11,11 +11,12 @@ import com.canyinghao.canmedia.R;
 
 public class BaseBarActivity extends SwipeBackActivity {
 
+    public static BaseBarActivity activity;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+         activity=this;
 
 	}
 

@@ -1,4 +1,4 @@
-package com.canyinghao.canmedia.adapter;
+package com.canyinghao.canmedia.adapter.music;
 
 import android.content.Context;
 import android.view.View;
@@ -8,9 +8,14 @@ import android.widget.TextView;
 
 import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.activity.music.MusicActivity;
+import com.canyinghao.canmedia.adapter.NewBaseAdapter;
 import com.canyinghao.canmedia.bean.music.AudioBean;
+import com.canyinghao.canmedia.bean.music.PlaylistBean;
+import com.canyinghao.canmedia.utils.MusicList.AudioUtils;
+import com.canyinghao.canmedia.utils.MusicList.PlaylistUtils;
 import com.canyinghao.canmedia.view.dialog.CustomListDialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -19,11 +24,11 @@ import butterknife.InjectView;
 /**
  * Created by yangjian on 15/5/30.
  */
-public class MusicListAdapter extends  NewBaseAdapter<AudioBean> {
+public class MusicListAdapter extends NewBaseAdapter<AudioBean> {
 
 
 
-    private  String[] options={"收藏","添加","分享","信息","删除","设为铃声"};
+    private  String[] options={"收藏","分享","信息","删除","设为铃声"};
 
 
     public MusicListAdapter(Context c, List<AudioBean> list) {
@@ -56,7 +61,45 @@ public class MusicListAdapter extends  NewBaseAdapter<AudioBean> {
             public boolean onLongClick(View view) {
                 new CustomListDialog(context,bean.getName(),options,new CustomListDialog.OnItemClick() {
                     @Override
-                    public void itemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    public void itemClick(AdapterView<?> arg0, View arg1, int i, long arg3) {
+                         switch (i){
+
+                             case  0:
+
+
+                                List<PlaylistBean> list=    PlaylistUtils.getAllPlaylist();
+
+                                 final  List<String> strList=new ArrayList<String>();
+                                 for (PlaylistBean bean1:list){
+                                     strList.add(bean1.getName());
+
+                                 }
+
+                                 new CustomListDialog(context,bean.getName(),strList,new CustomListDialog.OnItemClick() {
+                                     @Override
+                                     public void itemClick(AdapterView<?> arg0, View arg1, int p, long arg3) {
+
+
+
+
+                                         AudioUtils.getInstance().addMediaToPlaylist(bean,strList.get(p));
+
+
+
+                                     }
+                                 }).show();
+
+                                 break;
+                              case  1:
+                                 break;
+                              case  2:
+                                 break;
+                              case  3:
+                                 break;
+                              case  4:
+                                 break;
+
+                         }
 
 
 
@@ -74,7 +117,7 @@ public class MusicListAdapter extends  NewBaseAdapter<AudioBean> {
 
 
 
-                MusicActivity.getMusicView().setPlayList(list).setPlayBean(bean).play();
+                MusicActivity.getMusicView().setPlayListAddBean(list, bean).play();
 
 
 

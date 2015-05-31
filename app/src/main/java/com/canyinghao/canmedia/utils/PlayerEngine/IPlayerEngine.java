@@ -10,6 +10,7 @@ public interface IPlayerEngine {
 
 	void play();
 
+
 	void reset();
 
 	void stop();
