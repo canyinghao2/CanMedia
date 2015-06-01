@@ -46,7 +46,7 @@ public class MusicListFragment extends BaseFragment {
     ListView listView;
 
     int type;
-
+    CustomContentObserver observer;
 
     private List<AudioBean> list;
 
@@ -66,11 +66,11 @@ public class MusicListFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+         observer=    new CustomContentObserver(null);
         // 注册一个内容观察者 观察数据库内容的改变
        context. getContentResolver().registerContentObserver(
-                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, true,
-                new CustomContentObserver(new Handler()));
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, true,observer
+               );
     }
 
     @Override
@@ -210,7 +210,12 @@ public class MusicListFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onDestroy() {
+        context.getContentResolver().unregisterContentObserver(observer);
+        super.onDestroy();
 
+    }
 
     /**
      * 利用内容观察者 观察数据的变化 只有数据库发生变化的时候 才重新获取数据库里面的内容

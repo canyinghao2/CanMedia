@@ -1,6 +1,7 @@
 package com.canyinghao.canmedia;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -12,6 +13,8 @@ import com.canyinghao.canmedia.utils.PlayerEngine.PlayerEngineImpl;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.lidroid.xutils.DbUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,6 +31,13 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
 
 
 
+    public static RefWatcher getRefWatcher(Context context) {
+        App application = (App) context.getApplicationContext();
+        return application.refWatcher;
+    }
+
+    private RefWatcher refWatcher;
+
 
 	@Override
 	public void onCreate() {
@@ -38,6 +48,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
 
 
 		app = this;
+        refWatcher = LeakCanary.install(this);
         Fresco.initialize(this);
 		ButterKnife.setDebug(BuildConfig.DEBUG);
 		LogHelper.DEBUG=BuildConfig.DEBUG;
