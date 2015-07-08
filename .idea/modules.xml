@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/CanMedia.iml" filepath="$PROJECT_DIR$/CanMedia.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/canhelper/canhelper.iml" filepath="$PROJECT_DIR$/canhelper/canhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/music/music.iml" filepath="$PROJECT_DIR$/music/music.iml" />
       <module fileurl="file://$PROJECT_DIR$/otherlibrary/otherlibrary.iml" filepath="$PROJECT_DIR$/otherlibrary/otherlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/picture/picture.iml" filepath="$PROJECT_DIR$/picture/picture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/video/video.iml" filepath="$PROJECT_DIR$/video/video.iml" />
     </modules>
   </component>
 </project>
-

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.canyinghao.canhelper.IntentHelper;
 import com.canyinghao.canhelper.SPHepler;
-import com.canyinghao.canmedia.App;
 import com.canyinghao.canmedia.Constant;
 import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.activity.BaseBarActivity;

@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import com.canyinghao.canhelper.PhoneHelper;
-import com.canyinghao.canmedia.App;
 import com.canyinghao.canmedia.R;
 import com.canyinghao.canmedia.bean.music.AudioBean;
 import com.lidroid.xutils.db.sqlite.Selector;

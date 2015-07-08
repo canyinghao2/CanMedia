@@ -1,7 +1,6 @@
 package com.canyinghao.canmedia.utils.MusicList;
 
 import com.canyinghao.canhelper.PhoneHelper;
-import com.canyinghao.canmedia.App;
 import com.canyinghao.canmedia.bean.music.AudioBean;
 import com.canyinghao.canmedia.bean.music.PlaylistBean;
 import com.lidroid.xutils.db.sqlite.Selector;

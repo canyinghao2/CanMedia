@@ -2,6 +2,8 @@ package com.canyinghao.canhelper;
 
 import android.app.Application;
 
+import com.canyinghao.canhelper.utils.LogHelper;
+
 /**
  * 用来初始化
  * @author canyinghao
@@ -23,7 +25,7 @@ public class CanHelper {
 	public static Application getApp() {
 		if (app==null) {
 			
-			LogHelper.logv("CanHelper", "init error");
+			LogHelper.v("CanHelper", "init error");
 		}
 		return app;
           

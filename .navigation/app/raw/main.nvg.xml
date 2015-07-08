@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.video.VideoPlayerActivity"/>
+      <point      
+        x = "1664"      
+        y = "804"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.music.MusicPlayActivity"/>
+      <point      
+        x = "-408"      
+        y = "460"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.music.MusicActivity"/>
+      <point      
+        x = "2012"      
+        y = "-160"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.picture.PictureListActivity"/>
+      <point      
+        x = "-148"      
+        y = "1156"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.music.MusicLocalActivity"/>
+      <point      
+        x = "-156"      
+        y = "548"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.canyinghao.canmedia.activity.music.MusicListActivity"/>
+      <point      
+        x = "720"      
+        y = "76"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>

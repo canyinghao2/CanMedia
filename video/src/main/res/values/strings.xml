@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">video</string>
+
+    <string name="init_decoders">正在进行第一次解压解码包...</string>
+</resources>

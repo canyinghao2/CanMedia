@@ -1,1 +1,1 @@
-include ':app', ':canhelper', ':otherlibrary'
+include ':app', ':otherlibrary', ':canhelper', ':picture', ':music', ':video'
